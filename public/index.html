@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VidConnect - Professional Video Calling</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          animation: {
+            'gradient': 'gradient 8s ease infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            'gradient': {
+              '0%, 100%': {
+                'background-size': '200% 200%',
+                'background-position': 'left center'
+              },
+              '50%': {
+                'background-size': '200% 200%',
+                'background-position': 'right center'
+              }
+            },
+            'float': {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .gradient-bg {
+      background: linear-gradient(-45deg, #34353b, #1b1a1c, #333233, #201d1e);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+    }
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.441);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body class="min-h-screen gradient-bg">
+  <!-- Navigation -->
+  <nav class="relative z-10 p-6">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-lg">
+          <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+          </svg>
+        </div>
+        <span class="text-2xl font-bold text-white">VidConnect</span>
+      </div>
+      <div class="hidden md:flex space-x-8">
+        <a href="#features" class="text-white hover:text-purple-200 transition-colors">Features</a>
+        <a href="#how-it-works" class="text-white hover:text-purple-200 transition-colors">How it Works</a>
+        <a href="#about" class="text-white hover:text-purple-200 transition-colors">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative z-10 px-6 py-20">
+    <div class="max-w-7xl mx-auto text-center">
+      <div class="animate-float">
+        <h1 class="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight">
+          Connect
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-300">
+            Instantly
+          </span>
+        </h1>
+      </div>
+      <p class="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
+        Experience seamless video calling with crystal-clear quality. Join rooms instantly, share moments effortlessly.
+      </p>
+      
+      <!-- Join Room Form -->
+      <div class="glass-effect rounded-3xl p-8 max-w-md mx-auto mb-12 shadow-2xl">
+        <form action="/join" method="POST" class="space-y-6">
+          <div>
+            <label for="name" class="block text-white text-sm font-medium mb-2">Your Name</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="n1" 
+              required
+              class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-all"
+              placeholder="Enter your name"
+            >
+          </div>
+          <div>
+            <label for="room" class="block text-white text-sm font-medium mb-2">Room ID</label>
+            <input 
+              type="text" 
+              id="room" 
+              name="pass" 
+              required
+              class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-all"
+              placeholder="Enter room ID"
+            >
+          </div>
+          <button 
+            type="submit"
+            class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 px-6 rounded-xl font-semibold text-lg hover:from-purple-700 hover:to-pink-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+          >
+            Join Room
+          </button>
+        </form>
+      </div>
+
+      <!-- Quick Start Button -->
+      <div class="space-y-4">
+        <button 
+          onclick="createRandomRoom()"
+          class="glass-effect text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white/20 transition-all duration-200 transform hover:scale-105 shadow-lg"
+        >
+          Create New Room
+        </button>
+        <p class="text-white/70 text-sm">Or create a room with a random ID</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="relative z-10 px-6 py-20">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-bold text-white text-center mb-16">
+        Why Choose VidConnect?
+      </h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="glass-effect rounded-3xl p-8 text-center hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
+          <div class="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-4">Lightning Fast</h3>
+          <p class="text-white/80">Connect instantly with minimal latency. No downloads, no installations required.</p>
+        </div>
+        
+        <div class="glass-effect rounded-3xl p-8 text-center hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
+          <div class="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-4">Secure & Private</h3>
+          <p class="text-white/80">End-to-end encrypted connections ensure your conversations stay private.</p>
+        </div>
+        
+        <div class="glass-effect rounded-3xl p-8 text-center hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
+          <div class="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-4">Multi-User Support</h3>
+          <p class="text-white/80">Host meetings with multiple participants in crystal-clear HD quality.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="relative z-10 px-6 py-20">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-bold text-white text-center mb-16">
+        Get Started in 3 Simple Steps
+      </h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-20 h-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-2xl">
+            1
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-4">Enter Details</h3>
+          <p class="text-white/80">Simply enter your name and room ID to get started.</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-20 h-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-2xl">
+            2
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-4">Join Room</h3>
+          <p class="text-white/80">Click join and allow camera/microphone access.</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-20 h-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-2xl">
+            3
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-4">Start Connecting</h3>
+          <p class="text-white/80">Share the room ID with others and start your meeting!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+   <section id="about" class="relative z-10 px-6 py-20">
+  <footer class="relative z-10 px-6 py-12 border-t border-white/20">
+    <div class="max-w-7xl mx-auto text-center">
+      <div class="flex items-center justify-center space-x-2 mb-4">
+        <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+          <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+          </svg>
+        </div>
+        <span class="text-xl font-bold text-white">VidConnect</span>
+      </div>
+      <p class="text-white/70 mb-4">Built with modern web technologies for seamless video communication.</p>
+      <p class="text-white/50 text-sm">© 2025 VidConnect.  ->Fowzan<-  .All rights reserved.</p>
+    </div>
+  </footer>
+  </section>
+
+  <script>
+    function createRandomRoom() {
+      const roomId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      const name = prompt("Enter your name:");
+      if (name) {
+        window.location.href = `/${roomId}&${name}`;
+      }
+    }
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
