@@ -5,10 +5,15 @@ const videoGrid = document.getElementById('video-grid');
 const nameContainer = document.getElementById('nameesss');
 
 // Initialize PeerJS
-const myPeer = new Peer(undefined, {
-  host: '/',
-  port: '3001'
-});
+const isLocalhost = window.location.hostname === 'localhost';
+
+const myPeer = isLocalhost
+  ? new Peer(undefined, {
+      host: '/',
+      port: '3001',
+      path: '/peerjs'
+    })
+  : new Peer(); // PeerJS Cloud (https://0.peerjs.com)
 
 // Create video element for current user
 const myVideo = document.createElement('video');
